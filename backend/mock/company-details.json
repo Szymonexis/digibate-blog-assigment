@@ -1,0 +1,33 @@
+{
+  "companyDescription": "We are a leading tech solutions provider, specializing in AI-driven software products for businesses.",
+  "productDescription": "Our flagship product is an AI-powered analytics platform that helps companies optimize operations and decision-making.",
+  "fullBusinessName": "Tech Innovations Incorporated",
+  "businessName": "Tech Innovations",
+  "industry": "Technology",
+  "email": "info@techinnovations.com",
+  "address": "123 Innovation Drive, Silicon Valley, CA, USA",
+  "sellPhysicalProducts": "No",
+  "numberOfEmployees": "150",
+  "createdAt": "2023-06-15T08:30:00Z",
+  "updatedAt": "2024-10-10T12:00:00Z",
+  "brandIdentity": {
+    "id": "BR12345",
+    "name": "Tech Innovations Branding",
+    "brandAttributes": ["Innovative", "Trustworthy", "Customer-focused"],
+    "mainColors": ["#FF5733", "#C70039"],
+    "secondaryColors": ["#900C3F", "#581845"],
+    "slogan": "Innovating Tomorrow's Solutions",
+    "font": "Helvetica",
+    "toneOfVoice": "Professional yet approachable",
+    "style": "Modern",
+    "colors": null,
+    "productImages": null,
+    "description": "Tech Innovations focuses on delivering the next generation of AI products.",
+    "languageOfContent": "English",
+    "website": "https://www.techinnovations.com",
+    "logos": [
+      "https://www.techinnovations.com/logo1.png",
+      "https://www.techinnovations.com/logo2.png"
+    ]
+  }
+}

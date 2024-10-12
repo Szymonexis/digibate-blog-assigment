@@ -1,0 +1,135 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "companyDescription": {
+      "type": "string"
+    },
+    "productDescription": {
+      "type": "string"
+    },
+    "fullBusinessName": {
+      "type": "string"
+    },
+    "businessName": {
+      "type": "string"
+    },
+    "industry": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "address": {
+      "type": "string"
+    },
+    "sellPhysicalProducts": {
+      "type": "string"
+    },
+    "numberOfEmployees": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "brandIdentity": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "brandAttributes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "mainColors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "secondaryColors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "slogan": {
+          "type": "string"
+        },
+        "font": {
+          "type": "string"
+        },
+        "toneOfVoice": {
+          "type": "string"
+        },
+        "style": {
+          "type": ["string", "null"]
+        },
+        "colors": {
+          "type": ["string", "null"]
+        },
+        "productImages": {
+          "type": ["array", "null"],
+          "items": {
+            "type": "string"
+          }
+        },
+        "description": {
+          "type": ["string", "null"]
+        },
+        "languageOfContent": {
+          "type": "string"
+        },
+        "website": {
+          "type": "string",
+          "format": "uri"
+        },
+        "logos": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "brandAttributes",
+        "mainColors",
+        "secondaryColors",
+        "slogan",
+        "font",
+        "toneOfVoice",
+        "languageOfContent",
+        "website",
+        "logos"
+      ]
+    }
+  },
+  "required": [
+    "companyDescription",
+    "productDescription",
+    "fullBusinessName",
+    "businessName",
+    "industry",
+    "email",
+    "address",
+    "sellPhysicalProducts",
+    "numberOfEmployees",
+    "createdAt",
+    "updatedAt",
+    "brandIdentity"
+  ]
+}

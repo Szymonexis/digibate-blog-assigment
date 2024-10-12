@@ -1,0 +1,44 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model BlogPostData {
+  id                 String    @id @default(uuid())
+  description        String
+  length             Length
+  structure          Structure
+  companyDetailsJSON Json
+  openAIresponse     String?
+  blogPost           BlogPost? @relation(fields: [blogPostId], references: [id])
+  blogPostId         String?   @unique
+}
+
+model BlogPost {
+  id           String        @id @default(uuid())
+  html         String
+  blogPostData BlogPostData?
+}
+
+enum Length {
+  SHORT
+  MEDIUM
+  LONG
+}
+
+enum Structure {
+  LIST_FORMAT
+  INTERVIEW_STYLE
+  TUTORIAL
+  STORY
+}
