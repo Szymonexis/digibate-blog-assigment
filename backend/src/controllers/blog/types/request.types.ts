@@ -1,5 +1,4 @@
-import { Transform } from 'class-transformer';
-import { IsDefined, IsEnum, IsObject, IsString } from 'class-validator';
+import { IsDefined, IsEnum, IsString } from 'class-validator';
 import { IsValidCompanyDetails } from 'src/validators/company-details.validator';
 import { MaxFileSize } from 'src/validators/max-file-size.validator';
 
@@ -20,13 +19,10 @@ export class CreateBlogDto {
   @IsDefined()
   structure: $Enums.Structure;
 
-  @IsObject()
+  @IsString()
   @MaxFileSize(MAX_FILE_SIZE)
   @IsValidCompanyDetails()
-  @Transform(({ value }) => {
-    return typeof value === 'object' ? value : JSON.parse(value);
-  })
-  companyDetailsJSON: CompanyDetails; // this needs to be a json string (validated with a schema.json located at utils/company-details.schema.json)
+  companyDetailsJSON: string;
 }
 
 export interface CompanyDetails {

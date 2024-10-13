@@ -1,0 +1,16 @@
+.description-form-field {
+  width: min(100%, 30rem);
+}
+
+.form-field {
+  margin-bottom: 1rem;
+
+  &__label {
+    margin-bottom: 1rem;
+  }
+}
+
+.step-buttons {
+  display: flex;
+  gap: 1rem;
+}

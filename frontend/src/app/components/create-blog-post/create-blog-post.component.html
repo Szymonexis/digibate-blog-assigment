@@ -1,0 +1,101 @@
+<ng-container *ngIf="{ createdBlogPost: createdBlogPost$ | async } as viewData">
+  <mat-stepper orientation="vertical">
+    <!-- Step 1: Description -->
+    <mat-step [stepControl]="firstStepGroup">
+      <form [formGroup]="firstStepGroup">
+        <ng-template matStepLabel>Provide description for your post</ng-template>
+
+        <mat-form-field class="description-form-field">
+          <mat-label>Description</mat-label>
+          <textarea
+            matInput
+            name="description"
+            formControlName="description"
+            placeholder="Description"
+            cdkTextareaAutosize
+            cdkTextareaMinRows="5"
+            cdkAutosizeMaxRows="15"
+            required>
+          </textarea>
+        </mat-form-field>
+
+        <div>
+          <button mat-stroked-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <!-- Step 2: Length and Structure -->
+    <mat-step [stepControl]="secondStepGroup">
+      <form [formGroup]="secondStepGroup">
+        <ng-template matStepLabel>Specify length and structure of the blog post</ng-template>
+
+        <div class="form-field">
+          <div class="form-field__label">Length</div>
+
+          <mat-button-toggle-group formControlName="length">
+            @for (lengthDescriptionTuple of LENGTH_DESCRIPTIONS; track $index) {
+              <mat-button-toggle [value]="lengthDescriptionTuple[0]">
+                {{ lengthDescriptionTuple[1] }}
+              </mat-button-toggle>
+            }
+          </mat-button-toggle-group>
+        </div>
+
+        <div class="form-field">
+          <div class="form-field__label">Structure</div>
+
+          <mat-button-toggle-group formControlName="structure">
+            @for (structureDescriptionTuple of STRUCTURE_DESCRIPTIONS; track $index) {
+              <mat-button-toggle [value]="structureDescriptionTuple[0]">
+                {{ structureDescriptionTuple[1] }}
+              </mat-button-toggle>
+            }
+          </mat-button-toggle-group>
+        </div>
+
+        <div class="step-buttons">
+          <button mat-stroked-button matStepperPrevious>Back</button>
+
+          <button mat-stroked-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <!-- Step 3: Company Details JSON -->
+    <mat-step [stepControl]="thirdStepGroup">
+      <form [formGroup]="thirdStepGroup">
+        <ng-template matStepLabel>Provide your company details in JSON format</ng-template>
+
+        <div class="form-field">
+          <div class="form-field__label">Company Details JSON</div>
+          <input type="file" (change)="handleFileInput($event)" accept=".json" />
+        </div>
+
+        <div class="step-buttons">
+          <button mat-stroked-button matStepperPrevious>Back</button>
+
+          <button mat-stroked-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+
+      <p>You can now either confirm or go back and change the data provided</p>
+
+      <div class="step-buttons">
+        <button mat-stroked-button matStepperPrevious>Back</button>
+
+        <button mat-stroked-button (click)="onSubmit()">
+          @if (!!viewData?.createdBlogPost?.isLoading) {
+            <mat-spinner></mat-spinner>
+          } @else {
+            Continue
+          }
+        </button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+</ng-container>

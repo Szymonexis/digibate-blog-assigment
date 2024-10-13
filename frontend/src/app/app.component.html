@@ -1,0 +1,25 @@
+<ng-container
+  *ngIf="{
+    isLoading: isLoading$ | async,
+  } as viewData">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <nav mat-tab-nav-bar>
+        <a mat-tab-link [routerLink]="'/' + PATHS.CREATE" routerLinkActive="active-link">
+          Create new blog post
+        </a>
+        <a mat-tab-link [routerLink]="'/' + PATHS.SHOW" routerLinkActive="active-link">
+          List of generated blog posts
+        </a>
+      </nav>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  @if (viewData?.isLoading) {
+    <div class="loader">
+      <mat-spinner></mat-spinner>
+    </div>
+  }
+
+  <router-outlet></router-outlet>
+</ng-container>

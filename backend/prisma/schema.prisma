@@ -19,7 +19,6 @@ model BlogPostData {
   length             Length
   structure          Structure
   companyDetailsJSON Json
-  openAIresponse     String?
   blogPost           BlogPost? @relation(fields: [blogPostId], references: [id])
   blogPostId         String?   @unique
 }

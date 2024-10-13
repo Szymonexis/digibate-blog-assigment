@@ -1,0 +1,77 @@
+<ng-container
+  *ngIf="{
+    storeSelectedBlogPost: storeSelectedBlogPost$ | async,
+  } as viewData">
+  <div class="dialog">
+    <mat-dialog-content class="dialog__content">
+      @if (!!viewData?.storeSelectedBlogPost?.isLoading) {
+        <div class="dialog__spinner">
+          <mat-spinner></mat-spinner>
+        </div>
+      } @else {
+        <h3>Created blog post</h3>
+
+        <app-html-viewer
+          [htmlContent]="
+            viewData?.storeSelectedBlogPost?.data?.blogPost?.html ?? ''
+          "></app-html-viewer>
+
+        <div class="dialog__field">
+          <p>Provided description:</p>
+
+          <p class="dialog__field__text">
+            {{ viewData?.storeSelectedBlogPost?.data?.description }}
+          </p>
+        </div>
+
+        <div class="dialog__field dialog__field__chips">
+          <div>
+            Used length:
+
+            <mat-chip-set>
+              <mat-chip>
+                {{
+                  LENGTH_DESCRIPTIONS_MAP[
+                    viewData.storeSelectedBlogPost?.data?.length ?? LENGTH.SHORT
+                  ]
+                }}
+              </mat-chip>
+            </mat-chip-set>
+          </div>
+
+          <div>
+            Used structure:
+
+            <mat-chip-set>
+              <mat-chip>{{
+                STRUCTURE_DESCRIPTIONS_MAP[
+                  viewData?.storeSelectedBlogPost?.data?.structure ?? STRUCTURE.INTERVIEW_STYLE
+                ]
+              }}</mat-chip>
+            </mat-chip-set>
+          </div>
+
+          <div>
+            <div>Used company details:</div>
+
+            <div>
+              <button
+                mat-stroked-button
+                (click)="
+                  onDownloadProvidedCompanyDetails(
+                    viewData?.storeSelectedBlogPost?.data?.companyDetailsJSON
+                  )
+                ">
+                Download provided json
+              </button>
+            </div>
+          </div>
+        </div>
+      }
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+      <button mat-stroked-button mat-dialog-close>Close</button>
+    </mat-dialog-actions>
+  </div>
+</ng-container>

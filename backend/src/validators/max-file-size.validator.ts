@@ -13,8 +13,8 @@ export function MaxFileSize(
       propertyName: propertyName,
       options: validationOptions,
       validator: {
-        validate(value: object) {
-          return getObjectSizeInBytes(value) <= maxSizeInBytes;
+        validate(value: string) {
+          return getSizeInBytes(value) <= maxSizeInBytes;
         },
 
         defaultMessage() {
@@ -25,8 +25,7 @@ export function MaxFileSize(
   };
 }
 
-function getObjectSizeInBytes(obj: object): number {
-  const objectString = JSON.stringify(obj);
-  const byteSize = new TextEncoder().encode(objectString).length;
+function getSizeInBytes(value: string): number {
+  const byteSize = new TextEncoder().encode(value).length;
   return byteSize;
 }

@@ -1,5 +1,9 @@
+import {
+  CompanyDetails,
+  CreateBlogDto,
+} from 'src/controllers/blog/types/request.types';
+
 import { $Enums } from '@prisma/client';
-import { CreateBlogDto } from 'src/controllers/blog/types/request.types';
 
 const LENGTH_TRANSLATIONS: { [key in $Enums.Length]: string } = {
   LONG: '5 paragraphs',
@@ -9,10 +13,15 @@ const LENGTH_TRANSLATIONS: { [key in $Enums.Length]: string } = {
 
 export function createPrompt(createBlogData: CreateBlogDto): string {
   const { length, structure, companyDetailsJSON, description } = createBlogData;
+
+  const companyDetailsJSONObject = JSON.parse(
+    companyDetailsJSON,
+  ) as CompanyDetails;
+
   const {
     businessName,
     brandIdentity: { mainColors, font },
-  } = companyDetailsJSON;
+  } = companyDetailsJSONObject;
 
   const prompt = `
   Create a blog post for ${businessName} company in a form of html code - output only the html code.

@@ -15,7 +15,7 @@ export function IsValidCompanyDetails(validationOptions?: ValidationOptions) {
       propertyName: propertyName,
       options: validationOptions,
       validator: {
-        validate(value: object) {
+        validate(value: string) {
           const validate = ajv.compile(companyDetailsSchema);
           return validate(value);
         },
