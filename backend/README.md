@@ -17,5 +17,8 @@ Preparation:
 - `npx prisma generate`
 - `npx prisma migrate deploy`
 - `npx prisma db pull` - optional to check if the migration was successful
+
+Run:
+
 - `npm run start:dev`
 - `npx prisma studio` - optional to watch the changes within the db in real time
